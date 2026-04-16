@@ -57,34 +57,4 @@ const getMyAttendence = async (req, res) => {
   }
 };
 
-// For Admin
-const getAllAttendence = async (req, res) => {
-  try {
-    const { date, userId } = req.query;
-
-    const query = {};
-
-    if (date) {
-      const selectedDate = new Date(date);
-      selectedDate.setHours(0, 0, 0, 0);
-
-      query.date = selectedDate;
-    }
-
-    if (userId) {
-      query.user = userId;
-    }
-
-    const records = await AttendenceModel.find(query)
-      .populate("user", "fullName email")
-      .sort({ date: -1 });
-
-    res.status(200).json({
-      success: true,
-      records,
-    });
-  } catch (error) {
-    res.status(500).json({ message: error.message, success: false });
-  }
-};
-export { markAttendence, getMyAttendence, getAllAttendence };
+export { markAttendence, getMyAttendence };
