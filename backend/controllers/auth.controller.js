@@ -69,7 +69,6 @@ const authRegister = async (req, res) => {
 const authLogin = async (req, res) => {
   try {
     const { email, password } = req.body;
-    console.log(email);
 
     if (!email || !password) {
       return res.status(400).json({
@@ -136,4 +135,24 @@ const authLogout = async (req, res) => {
   }
 };
 
-export { authRegister, authLogin, authLogout };
+const getUserProfile = async (req, res) => {
+  try {
+    const user = req.user;
+    res.status(200).json({
+      success: true,
+      profile: {
+        fullName: user.fullName,
+        email: user.email,
+        role: user.role,
+        dateOfJoining: user.createdAt,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+      success: false,
+    });
+  }
+};
+
+export { authRegister, authLogin, authLogout, getUserProfile };
