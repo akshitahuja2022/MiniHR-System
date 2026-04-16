@@ -1,19 +1,24 @@
 import express from "express";
 import connectDB from "./config/db.js";
 import dotenv from "dotenv";
+import authRouter from "./routes/auth.route.js";
+import cookieParser from "cookie-parser";
 
 dotenv.config();
 connectDB();
 
 const app = express();
 app.use(express.json());
+app.use(cookieParser());
+
+app.use("/api", authRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, (req, res) => {
-  console.log("server is running on 3000 port");
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
