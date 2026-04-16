@@ -5,6 +5,7 @@ import authRouter from "./routes/auth.route.js";
 import cookieParser from "cookie-parser";
 import leaveRouter from "./routes/leave.route.js";
 import attendanceRouter from "./routes/attendence.route.js";
+import adminRouter from "./routes/admin.route.js";
 
 dotenv.config();
 connectDB();
@@ -16,6 +17,7 @@ app.use(cookieParser());
 app.use("/api", authRouter);
 app.use("/api/leave", leaveRouter);
 app.use("/api/attendence", attendanceRouter);
+app.use("/api/admin", adminRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello World");
