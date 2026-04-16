@@ -3,6 +3,8 @@ import connectDB from "./config/db.js";
 import dotenv from "dotenv";
 import authRouter from "./routes/auth.route.js";
 import cookieParser from "cookie-parser";
+import leaveRouter from "./routes/leave.route.js";
+import attendanceRouter from "./routes/attendence.route.js";
 
 dotenv.config();
 connectDB();
@@ -12,6 +14,8 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use("/api", authRouter);
+app.use("/api/leave", leaveRouter);
+app.use("/api/attendence", attendanceRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello World");
