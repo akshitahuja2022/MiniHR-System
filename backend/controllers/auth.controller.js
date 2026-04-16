@@ -1,11 +1,11 @@
 import UserModel from "../models/user.model.js";
 import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 const authRegister = async (req, res) => {
-  try {
-    const { fullName, email, password, role } = req.body;
+  const { fullName, email, password, role } = req.body;
 
+  try {
     if (!fullName || !email || !password) {
       return res.status(400).json({
         message: "All fields are required",
@@ -26,7 +26,7 @@ const authRegister = async (req, res) => {
       fullName,
       email,
       password: hashedPassword,
-      role: role || "employee",
+      role: role || "Employee",
     });
 
     const token = jwt.sign(
@@ -59,6 +59,7 @@ const authRegister = async (req, res) => {
       },
     });
   } catch (error) {
+    console.log("REGISTER ERROR :", error);
     res.status(500).json({
       message: error.message,
       success: false,
