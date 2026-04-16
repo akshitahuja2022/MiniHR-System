@@ -30,6 +30,10 @@ const approveLeave = async (req, res) => {
 
     const user = leave.user;
 
+    if (!leave.user) {
+      return res.status(400).json({ message: "User not found in leave" });
+    }
+
     if (user.leaveBalance < leave.totalDays) {
       return res.status(400).json({
         message: "Insufficient leave balance",
@@ -59,6 +63,10 @@ const rejectLeave = async (req, res) => {
 
     if (!leave) {
       return res.status(404).json({ message: "Leave not found" });
+    }
+
+    if (leave.status !== "pending") {
+      return res.status(400).json({ message: "Already processed" });
     }
 
     leave.status = "rejected";
