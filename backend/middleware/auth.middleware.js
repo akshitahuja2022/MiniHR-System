@@ -17,6 +17,15 @@ export const isAuthenticated = async (req, res, next) => {
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
+    const userId = decoded._id || decoded.id;
+
+    if (!userId) {
+      return res.status(401).json({
+        message: "Invalid token payload",
+        success: false,
+      });
+    }
+
     const user = await UserModel.findById(decoded._id).select("-password");
 
     if (!user) {
