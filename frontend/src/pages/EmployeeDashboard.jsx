@@ -44,7 +44,7 @@ const EmployeeDashboard = () => {
                   Quickly mark today's attendance and keep your record updated.
                 </p>
                 <div className="mt-6 overflow-x-hidden">
-                  {/* <MarkedAttendence /> */}
+                  <MarkedAttendence />
                 </div>
               </div>
 

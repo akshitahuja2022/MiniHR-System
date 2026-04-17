@@ -16,7 +16,6 @@ const LeaveBalanceSummary = () => {
         );
 
         const data = await res.json();
-        console.log("API response:", data);
 
         if (data?.balance) {
           setLeaveBalance(data.balance);
