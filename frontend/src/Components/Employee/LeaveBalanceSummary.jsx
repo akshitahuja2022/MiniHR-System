@@ -2,9 +2,10 @@ import React, { useContext, useEffect } from "react";
 import { LeaveContext } from "../../Context/Context";
 
 const LeaveBalanceSummary = () => {
-  const { leaveBalance, setLeaveBalance } = useContext(LeaveContext);
+  const { leaveBalance, setLeaveBalance, user } = useContext(LeaveContext);
 
   useEffect(() => {
+    if (!user) return;
     const fetchBalance = async () => {
       try {
         const res = await fetch(
@@ -31,7 +32,7 @@ const LeaveBalanceSummary = () => {
     setTimeout(() => {
       fetchBalance();
     }, 300);
-  }, [setLeaveBalance]);
+  }, [setLeaveBalance, user]);
 
   return (
     <div>
