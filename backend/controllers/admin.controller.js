@@ -111,4 +111,35 @@ const getAllAttendence = async (req, res) => {
   }
 };
 
-export { getAllUsers, rejectLeave, approveLeave, getAllAttendence };
+const getAllLeaves = async (req, res) => {
+  try {
+    const leaves = await LeaveModel.find()
+      .populate({
+        path: "user",
+        select: "fullName email role",
+        match: { role: { $ne: "Admin" } }, // 🔥 exclude admin
+      })
+      .sort({ createdAt: -1 });
+
+    // remove records where user is null (filtered out by match)
+    const filteredLeaves = leaves.filter((leave) => leave.user !== null);
+
+    res.status(200).json({
+      success: true,
+      leaves: filteredLeaves,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+      success: false,
+    });
+  }
+};
+
+export {
+  getAllUsers,
+  rejectLeave,
+  approveLeave,
+  getAllAttendence,
+  getAllLeaves,
+};
