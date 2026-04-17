@@ -9,6 +9,7 @@ import ApplyLeaveForm from "./Components/Employee/ApplyLeaveForm";
 import YourLeaves from "./Components/Employee/YourLeaves";
 import EditLeaveForm from "./Components/Employee/EditLeaveForm";
 import MyAttendence from "./Components/Employee/MyAttendence";
+import AllUsers from "./Components/Admin/AllUser";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
         <Route path="/leaveApply" element={<ApplyLeaveForm />} />
         <Route path="/yourLeaves" element={<YourLeaves />} />
         <Route path="/updateLeave/:id" element={<EditLeaveForm />} />
+        <Route path="/allEmployee" element={<AllUsers />} />
       </Routes>
       <ToastContainer />
     </>
