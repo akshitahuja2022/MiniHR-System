@@ -31,21 +31,21 @@ const LeaveBalanceSummary = () => {
           <div className="text-center p-4 sm:p-5 bg-blue-50 rounded-lg">
             <p className="text-xs sm:text-sm text-gray-600">Used</p>
             <p className="text-xl sm:text-2xl font-bold text-blue-600">
-              {leaveBalance.used}
+              {leaveBalance?.used}
             </p>
           </div>
 
           <div className="text-center p-4 sm:p-5 bg-green-50 rounded-lg">
             <p className="text-xs sm:text-sm text-gray-600">Remaining</p>
             <p className="text-xl sm:text-2xl font-bold text-green-600">
-              {leaveBalance.remaining}
+              {leaveBalance?.remaining}
             </p>
           </div>
 
           <div className="text-center p-4 sm:p-5 bg-gray-50 rounded-lg">
             <p className="text-xs sm:text-sm text-gray-600">Total Balance</p>
             <p className="text-xl sm:text-2xl font-bold text-gray-600">
-              {leaveBalance.total}
+              {leaveBalance?.total}
             </p>
           </div>
         </div>
