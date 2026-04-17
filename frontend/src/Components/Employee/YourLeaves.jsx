@@ -88,22 +88,37 @@ const YourLeaves = () => {
 
               <p className="text-sm mt-2 mb-2">Reason: {leave.reason}</p>
 
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => navigate(`/updateLeave/${leave._id}`)}
-                  className="p-2 sm:p-2.5 rounded-lg bg-blue-50 text-blue-600
-      hover:bg-blue-100 active:scale-95 transition"
+              <div className="flex justify-between">
+                <p
+                  className={`text-sm mt-2 mb-2 px-2 py-1 rounded-lg w-fit font-medium
+    ${
+      leave.status === "pending"
+        ? "bg-yellow-100 text-yellow-700"
+        : leave.status === "approved"
+          ? "bg-green-100 text-green-700"
+          : "bg-red-100 text-red-700"
+    }`}
                 >
-                  <MdEdit className="text-base sm:text-lg" />
-                </button>
+                  {leave.status}
+                </p>
 
-                <button
-                  onClick={() => cancelLeave(leave._id)}
-                  className="p-2 sm:p-2.5 rounded-lg bg-red-50 text-red-600
+                <div className="flex items-center gap-4">
+                  <button
+                    onClick={() => navigate(`/updateLeave/${leave._id}`)}
+                    className="p-2 sm:p-2.5 rounded-lg bg-blue-50 text-blue-600
+      hover:bg-blue-100 active:scale-95 transition"
+                  >
+                    <MdEdit className="text-base sm:text-lg" />
+                  </button>
+
+                  <button
+                    onClick={() => cancelLeave(leave._id)}
+                    className="p-2 sm:p-2.5 rounded-lg bg-red-50 text-red-600
       hover:bg-red-100 active:scale-95 transition"
-                >
-                  <MdDelete className="text-base sm:text-lg" />
-                </button>
+                  >
+                    <MdDelete className="text-base sm:text-lg" />
+                  </button>
+                </div>
               </div>
             </div>
           ))}
