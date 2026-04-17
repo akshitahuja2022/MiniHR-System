@@ -2,6 +2,7 @@ import express from "express";
 import {
   applyLeave,
   cancelLeave,
+  getLeaveBalance,
   getMyLeaves,
   updateLeave,
   viewLeaveHistory,
@@ -15,5 +16,6 @@ leaveRouter.get("/allLeaves", isAuthenticated, getMyLeaves);
 leaveRouter.put("/edit/:id", isAuthenticated, updateLeave);
 leaveRouter.delete("/cancel/:id", isAuthenticated, cancelLeave);
 leaveRouter.get("/leaveHistory", isAuthenticated, viewLeaveHistory);
+leaveRouter.get("/balance", isAuthenticated, getLeaveBalance);
 
 export default leaveRouter;

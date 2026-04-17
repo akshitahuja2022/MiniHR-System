@@ -97,7 +97,8 @@ const cancelLeave = async (req, res) => {
       });
     }
 
-    await leave.deleteOne();
+    leave.status = "cancelled";
+    await leave.save();
 
     res.status(200).json({
       message: "Leave cancelled",
@@ -123,4 +124,43 @@ const viewLeaveHistory = async (req, res) => {
   }
 };
 
-export { applyLeave, getMyLeaves, updateLeave, cancelLeave, viewLeaveHistory };
+const getLeaveBalance = async (req, res) => {
+  try {
+    const TOTAL_LEAVE = 20;
+
+    const approvedLeaves = await LeaveModel.find({
+      user: req.user._id,
+      status: "approved",
+    });
+
+    const usedDays = approvedLeaves.reduce(
+      (sum, leave) => sum + leave.totalDays,
+      0,
+    );
+
+    const remaining = TOTAL_LEAVE - usedDays;
+
+    res.status(200).json({
+      success: true,
+      balance: {
+        total: TOTAL_LEAVE,
+        used: usedDays,
+        remaining: remaining < 0 ? 0 : remaining,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+export {
+  applyLeave,
+  getMyLeaves,
+  updateLeave,
+  cancelLeave,
+  viewLeaveHistory,
+  getLeaveBalance,
+};
