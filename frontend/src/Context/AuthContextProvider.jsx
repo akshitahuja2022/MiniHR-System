@@ -13,27 +13,44 @@ const AuthContextProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const fetchProfile = async () => {
+    const fetchedProfile = async () => {
       try {
+        const storedUser = localStorage.getItem("user");
+
+        if (storedUser) {
+          const parsedUser = JSON.parse(storedUser);
+          setUser(parsedUser);
+          setIsLogin(true);
+        }
+
         const res = await fetch(
-          `${import.meta.env.VITE_BACKEND_URL}/api/profile`,
+          `${import.meta.env.VITE_BACKEND_URL}/api/auth/profile`,
           {
             credentials: "include",
           },
         );
 
-        const { profile, success } = await res.json();
+        const data = await res.json();
 
-        if (success) {
-          setUser(profile);
+        if (data.success) {
+          setUser(data.profile);
           setIsLogin(true);
+          localStorage.setItem("user", JSON.stringify(data.profile));
+        } else {
+          setUser(null);
+          setIsLogin(false);
+          localStorage.removeItem("user");
         }
-      } catch (err) {
-        console.log(err);
+      } catch (error) {
+        console.log(error);
+        setUser(null);
+        setIsLogin(false);
+      } finally {
+        setLoading(false);
       }
     };
 
-    fetchProfile();
+    fetchedProfile();
   }, []);
 
   return (
