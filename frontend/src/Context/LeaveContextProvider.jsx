@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { LeaveContext } from "./LeaveContext";
+import { LeaveContext } from "./Context";
 
 const LeaveContextProvider = ({ children }) => {
   const [leaveForm, setLeaveForm] = useState({

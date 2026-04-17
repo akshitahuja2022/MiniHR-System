@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { AuthContext } from "./AuthContext";
+import { AuthContext } from "./Context";
 
 const AuthContextProvider = ({ children }) => {
   const [formData, setFormData] = useState({

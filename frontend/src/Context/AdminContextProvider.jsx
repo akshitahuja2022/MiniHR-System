@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { AdminContext } from "./AdminContext";
+import { AdminContext } from "./Context";
+
 
 const AdminContextProvider = ({ children }) => {
   const [records, setRecords] = useState([]);

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AttendanceContext } from "./AttendenceContext";
+import { AttendanceContext } from "./Context";
 
 const AttendanceProvider = ({ children }) => {
   const [attendance, setAttendance] = useState([]);
