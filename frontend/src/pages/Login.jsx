@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../Context/AuthContext";
 import { handleError, handleSuccess } from "../notification/Notify";
+import { AuthContext } from "../Context/Context";
 
 const LoginPage = () => {
   const navigate = useNavigate();

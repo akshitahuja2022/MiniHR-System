@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { AdminContext } from "../../Context/AdminContext";
+import { AdminContext } from "../../Context/Context";
 
 const AllAttendance = () => {
   const { records, setRecords, loading, setLoading } = useContext(AdminContext);

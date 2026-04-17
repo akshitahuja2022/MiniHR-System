@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
 import { IoMenu } from "react-icons/io5";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { AuthContext } from "../Context/AuthContext";
 import { handleError, handleSuccess } from "../notification/Notify";
 import { IoClose } from "react-icons/io5";
+import { AuthContext } from "../Context/Context";
 
 const Navbar = () => {
   const navigate = useNavigate();

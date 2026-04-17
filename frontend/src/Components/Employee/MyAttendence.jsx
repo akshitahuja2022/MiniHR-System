@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { handleError } from "../../notification/Notify";
-import { AttendanceContext } from "../../Context/AttendenceContext";
+import { AttendanceContext } from "../../Context/Context";
 
 const MyAttendence = () => {
   const { attendance, setAttendance, loading, setLoading } =

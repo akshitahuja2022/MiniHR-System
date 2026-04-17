@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { handleError, handleSuccess } from "../../notification/Notify";
-import { AttendanceContext } from "../../Context/AttendenceContext";
+import { AttendanceContext } from "../../Context/Context";
 
 const MarkedAttendence = () => {
   const { setAttendance, status, setStatus, loading, setLoading } =

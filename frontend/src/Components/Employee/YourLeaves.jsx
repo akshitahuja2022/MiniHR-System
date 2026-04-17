@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import { LeaveContext } from "../../Context/LeaveContext";
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import { handleError, handleSuccess } from "../../notification/Notify";
 import { useNavigate } from "react-router-dom";
+import { LeaveContext } from "../../Context/Context";
 
 const YourLeaves = () => {
   const navigate = useNavigate();

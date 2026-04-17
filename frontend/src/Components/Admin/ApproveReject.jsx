@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { LeaveContext } from "../../Context/LeaveContext";
+import { LeaveContext } from "../../Context/Context";
 import { handleError } from "../../notification/Notify";
 
 const LeaveRequests = () => {

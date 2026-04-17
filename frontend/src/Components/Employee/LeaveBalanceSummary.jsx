@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { LeaveContext } from "../../Context/LeaveContext";
+import { LeaveContext } from "../../Context/Context";
 
 const LeaveBalanceSummary = () => {
   const { leaveBalance, setLeaveBalance } = useContext(LeaveContext);
@@ -13,7 +13,7 @@ const LeaveBalanceSummary = () => {
         },
       );
 
-      const data = await res.json()
+      const data = await res.json();
       setLeaveBalance(data.balance);
     };
 

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { handleError, handleSuccess } from "../../notification/Notify";
-import { LeaveContext } from "../../Context/LeaveContext";
+import { LeaveContext } from "../../Context/Context";
 import { useNavigate } from "react-router-dom";
 
 const ApplyLeaveForm = () => {
