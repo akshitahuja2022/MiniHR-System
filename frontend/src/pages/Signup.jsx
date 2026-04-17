@@ -49,7 +49,7 @@ const SignupPage = () => {
         localStorage.setItem("user", JSON.stringify(user));
         setTimeout(() => {
           navigate("/");
-        }, 1000);
+        }, 3000);
         setFormData({
           fullName: "",
           email: "",
