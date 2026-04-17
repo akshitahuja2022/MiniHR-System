@@ -1,2 +1,16 @@
-node_modules
+node_modules/
 .env
+dist/
+build/
+coverage/
+
+# logs
+logs/
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+
+# Vite / React
+.vite/
