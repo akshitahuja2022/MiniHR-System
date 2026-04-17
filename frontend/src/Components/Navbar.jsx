@@ -3,6 +3,7 @@ import { IoMenu } from "react-icons/io5";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
 import { handleError, handleSuccess } from "../notification/Notify";
+import { IoClose } from "react-icons/io5";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -10,6 +11,7 @@ const Navbar = () => {
     useContext(AuthContext);
 
   const [isProfile, setIsProfile] = useState(false);
+  const [active, setActive] = useState(false);
 
   const handleLogout = async (e) => {
     e.preventDefault();
@@ -64,62 +66,25 @@ const Navbar = () => {
         )}
       </div>
 
-      <div className="md:hidden">
+      <div
+        onClick={() => {
+          setActive(!active);
+          setIsProfile(false);
+        }}
+        className="md:hidden"
+      >
         <IoMenu className="text-2xl mt-1 cursor-pointer" />
       </div>
 
-      {/* {active && (
+      {active && (
         <div className="absolute right-8 top-14 w-44 h-68 shadow-lg rounded-md bg-white">
           <ul className="flex flex-col px-4 py-2 ">
-            <NavLink
-              onClick={() => setActive(false)}
-              to="/"
-              className="text-md font-medium mt-2 cursor-pointer"
-            >
-              Home
-            </NavLink>
-            <NavLink
-              onClick={() => setActive(false)}
-              to="/about"
-              className="text-md font-medium mt-2 cursor-pointer"
-            >
-              About
-            </NavLink>
-            <NavLink
-              onClick={() => setActive(false)}
-              to="/destination"
-              className="text-md font-medium mt-2 cursor-pointer"
-            >
-              Destination
-            </NavLink>
-            <NavLink
-              onClick={() => setActive(false)}
-              to="/package"
-              className="text-md font-medium mt-2 cursor-pointer"
-            >
-              Package
-            </NavLink>
-            <NavLink
-              onClick={() => setActive(false)}
-              to="/booking"
-              className="text-md font-medium mt-2 cursor-pointer"
-            >
-              Booking
-            </NavLink>
-            <NavLink
-              onClick={() => setActive(false)}
-              to="/contact"
-              className="text-md font-medium mt-2 cursor-pointer"
-            >
-              Contact
-            </NavLink>
-
             <div className="mt-5 cursor-pointer mb-5">
               {isLogin ? (
                 <button
                   onClick={() => {
                     setActive(false);
-                    setProfile(!profile);
+                    setIsProfile(!isProfile);
                   }}
                   className="bg-blue-700 text-white px-6 py-2 rounded-full hover:bg-blue-800 font-medium shadow-md hover:shadow-lg"
                 >
@@ -136,7 +101,7 @@ const Navbar = () => {
             </div>
           </ul>
         </div>
-      )} */}
+      )}
 
       {isProfile && (
         <div className="absolute top-20 right-6 z-50 w-72 rounded-3xl border border-slate-200 bg-white p-4 shadow-2xl">
