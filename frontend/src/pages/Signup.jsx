@@ -1,12 +1,11 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
 import { handleError, handleSuccess } from "../notification/Notify";
 
 const SignupPage = () => {
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
-  const { formData, setFormData, setIsLogin, setUser } =
+  const { formData, setFormData, setIsLogin, setUser, loading, setLoading } =
     useContext(AuthContext);
 
   const handleChange = (e) => {
@@ -50,7 +49,7 @@ const SignupPage = () => {
         localStorage.setItem("user", JSON.stringify(user));
         setTimeout(() => {
           navigate("/");
-        }, 2000);
+        }, 1000);
         setFormData({
           fullName: "",
           email: "",
