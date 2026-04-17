@@ -95,13 +95,23 @@ const Navbar = () => {
 
             <ul className="flex flex-col px-3 sm:px-4 py-2 space-y-2">
               <li>
-                <Link
-                  onClick={() => setIsProfile(false)}
-                  to="/yourLeaves"
-                  className="block rounded-lg px-4 py-2 text-sm sm:text-base font-medium text-black hover:bg-blue-800 hover:text-whitetransition duration-200"
-                >
-                  Your Leaves
-                </Link>
+                {user.role === "Admin" ? (
+                  <Link
+                    onClick={() => setIsProfile(false)}
+                    to="/allEmployee"
+                    className="block rounded-lg px-4 py-2 text-sm sm:text-base font-medium text-black hover:bg-blue-800 hover:text-whitetransition duration-200"
+                  >
+                    All Employee
+                  </Link>
+                ) : (
+                  <Link
+                    onClick={() => setIsProfile(false)}
+                    to="/yourLeaves"
+                    className="block rounded-lg px-4 py-2 text-sm sm:text-base font-medium text-black hover:bg-blue-800 hover:text-whitetransition duration-200"
+                  >
+                    Your Leaves
+                  </Link>
+                )}
               </li>
             </ul>
 
