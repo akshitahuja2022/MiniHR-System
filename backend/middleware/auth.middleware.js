@@ -7,6 +7,7 @@ dotenv.config();
 export const isAuthenticated = async (req, res, next) => {
   try {
     const token = req.cookies.token;
+    console.log(token);
 
     if (!token) {
       return res.status(401).json({
@@ -16,8 +17,10 @@ export const isAuthenticated = async (req, res, next) => {
     }
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    console.log(decoded);
 
     const userId = decoded._id || decoded.id;
+    console.log(userId);
 
     const user = await UserModel.findById(userId).select("-password");
 
@@ -27,6 +30,7 @@ export const isAuthenticated = async (req, res, next) => {
         success: false,
       });
     }
+    console.log(user);
 
     req.user = user;
     next();
