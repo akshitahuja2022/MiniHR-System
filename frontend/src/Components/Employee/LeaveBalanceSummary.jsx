@@ -15,7 +15,7 @@ const LeaveBalanceSummary = () => {
         );
 
         const data = await res.json();
-       console.log("API response:", data);
+        console.log("API response:", data);
 
         if (data?.balance) {
           setLeaveBalance(data.balance);
@@ -28,7 +28,9 @@ const LeaveBalanceSummary = () => {
       }
     };
 
-    fetchBalance();
+    setTimeout(() => {
+      fetchBalance();
+    }, 300);
   }, [setLeaveBalance]);
 
   return (

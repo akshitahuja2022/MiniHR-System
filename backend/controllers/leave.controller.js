@@ -113,6 +113,7 @@ const viewLeaveHistory = async (req, res) => {
   try {
     const { status } = req.query;
 
+    console.log(req.user._id);
     const leaves = await LeaveModel.find({
       user: req.user._id,
       ...(status && { status }),
