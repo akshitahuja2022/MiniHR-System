@@ -42,8 +42,8 @@ const authRegister = async (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: true,
-      secure: isProduction,
-      sameSite: isProduction ? "None" : "Lax",
+      secure: true,
+      sameSite: "None",
       path: "/",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
@@ -106,8 +106,8 @@ const authLogin = async (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: true,
-      secure: isProduction,
-      sameSite: isProduction ? "None" : "Lax",
+      secure: true, // ALWAYS true on Render/production
+      sameSite: "None", // MUST be None for cross-site
       path: "/",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
@@ -129,7 +129,12 @@ const authLogin = async (req, res) => {
 
 const authLogout = async (req, res) => {
   try {
-    res.clearCookie("token");
+    res.clearCookie("token", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "None",
+      path: "/",
+    });
     res.status(200).json({ message: "Logout Successfully", success: true });
   } catch (error) {
     res.status(500).json({ message: error.message, success: true });
