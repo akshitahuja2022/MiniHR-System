@@ -18,7 +18,7 @@ const Navbar = () => {
     try {
       setLoading(true);
       const response = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL}/api/logout`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/auth/logout`,
       );
       const { message, success } = await response.json();
       if (success) {
