@@ -8,6 +8,7 @@ import EmployeeDashboard from "./pages/EmployeeDashboard";
 import ApplyLeaveForm from "./Components/Employee/ApplyLeaveForm";
 import YourLeaves from "./Components/Employee/YourLeaves";
 import EditLeaveForm from "./Components/Employee/EditLeaveForm";
+import MyAttendence from "./Components/Employee/MyAttendence";
 
 const App = () => {
   return (
