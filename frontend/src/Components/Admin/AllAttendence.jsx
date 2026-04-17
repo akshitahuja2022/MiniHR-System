@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { AdminContext } from "../../Context/Context";
+import { handleError } from "../../notification/Notify";
 
 const AllAttendance = () => {
   const { records, setRecords, loading, setLoading } = useContext(AdminContext);
@@ -20,7 +21,7 @@ const AllAttendance = () => {
           setRecords(data.records);
         }
       } catch (error) {
-        console.log("Error fetching attendance:", error);
+        handleError(error);
       } finally {
         setLoading(false);
       }

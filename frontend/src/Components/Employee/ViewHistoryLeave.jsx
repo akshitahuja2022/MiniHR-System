@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { handleError } from "../../notification/Notify";
 
 const ViewHistoryLeave = () => {
   const [leaveHistory, setLeaveHistory] = useState([]);
@@ -23,7 +24,7 @@ const ViewHistoryLeave = () => {
           setLeaveHistory(data.leaves || []);
         }
       } catch (error) {
-        console.log(error);
+        handleError(error);
       } finally {
         setLoading(false);
       }

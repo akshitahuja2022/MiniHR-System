@@ -30,8 +30,12 @@ const MarkedAttendence = () => {
         throw new Error(data.message);
       }
 
-      handleSuccess(data.message);
-      setAttendance((prev) => [data.attendance, ...prev]);
+      if (data.success) {
+        handleSuccess(data.message);
+        setAttendance((prev) => [data.attendance, ...prev]);
+      } else {
+        handleError(data.message);
+      }
     } catch (error) {
       handleError(error.message);
     } finally {

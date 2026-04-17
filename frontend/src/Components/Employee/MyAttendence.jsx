@@ -25,7 +25,11 @@ const MyAttendence = () => {
           throw new Error(data.message || "Failed to fetch attendance");
         }
 
-        setAttendance(data.attendence || []);
+        if (data.success) {
+          setAttendance(data.attendence || []);
+        } else {
+          handleError(data.message);
+        }
       } catch (error) {
         handleError(error.message);
       } finally {

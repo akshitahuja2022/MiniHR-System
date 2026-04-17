@@ -28,10 +28,10 @@ const YourLeaves = () => {
         if (data.success) {
           setLeaves(data.leaves || []);
         } else {
-          console.log(data.message);
+          handleError(data.message);
         }
       } catch (error) {
-        console.log(error);
+        handleError(error);
       } finally {
         setLoading(false);
       }
@@ -60,7 +60,7 @@ const YourLeaves = () => {
         handleError(data.message);
       }
     } catch (error) {
-      console.log(error);
+      handleError(error);
     }
   };
 

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { LeaveContext } from "../../Context/Context";
-import { handleError } from "../../notification/Notify";
+import { handleError, handleSuccess } from "../../notification/Notify";
 
 const LeaveRequests = () => {
   const { leaves, setLeaves } = useContext(LeaveContext);
@@ -36,6 +36,7 @@ const LeaveRequests = () => {
       const data = await res.json();
 
       if (data.success) {
+        handleSuccess(data.message);
         setLeaves((prev) =>
           prev.map((leave) =>
             leave._id === id ? { ...leave, status: "approved" } : leave,
@@ -62,6 +63,7 @@ const LeaveRequests = () => {
       const data = await res.json();
 
       if (data.success) {
+        handleSuccess(data.message);
         setLeaves((prev) =>
           prev.map((leave) =>
             leave._id === id ? { ...leave, status: "rejected" } : leave,
