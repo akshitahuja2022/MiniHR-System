@@ -5,7 +5,7 @@ import {
   authRegister,
   getUserProfile,
 } from "../controllers/auth.controller.js";
-import { isAdmin, isAuthenticated } from "../middleware/auth.middleware.js";
+import { isAuthenticated } from "../middleware/auth.middleware.js";
 
 const authRouter = express.Router();
 
