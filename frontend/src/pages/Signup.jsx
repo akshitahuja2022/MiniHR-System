@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../Context/AuthContext";
 import { handleError, handleSuccess } from "../notification/Notify";
 
 const SignupPage = () => {
@@ -38,7 +37,7 @@ const SignupPage = () => {
       const data = await response.json();
 
       if (!response.ok || !data.success) {
-        throw new Error(data.message || "Signup failed");
+        throw new Error(data.message);
       }
 
       const { message, success, user } = data;
@@ -55,9 +54,11 @@ const SignupPage = () => {
           email: "",
           password: "",
         });
+      } else {
+        handleError(data.message);
       }
     } catch (error) {
-      handleError(error.message);
+      handleError(error);
     } finally {
       setLoading(false);
     }
