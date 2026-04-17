@@ -12,7 +12,11 @@ const LeaveContextProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [leaves, setLeaves] = useState([]);
 
-  const [leaveBalance, setLeaveBalance] = useState([]);
+  const [leaveBalance, setLeaveBalance] = useState({
+    used: 0,
+    remaining: 0,
+    total: 20,
+  });
   return (
     <LeaveContext.Provider
       value={{

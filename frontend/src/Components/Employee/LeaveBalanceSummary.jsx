@@ -6,15 +6,26 @@ const LeaveBalanceSummary = () => {
 
   useEffect(() => {
     const fetchBalance = async () => {
-      const res = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL}/api/leave/balance`,
-        {
-          credentials: "include",
-        },
-      );
+      try {
+        const res = await fetch(
+          `${import.meta.env.VITE_BACKEND_URL}/api/leave/balance`,
+          {
+            credentials: "include",
+          },
+        );
 
-      const data = await res.json();
-      setLeaveBalance(data.balance);
+        const data = await res.json();
+       console.log("API response:", data);
+
+        if (data?.balance) {
+          setLeaveBalance(data.balance);
+        } else {
+          setLeaveBalance({ used: 0, remaining: 0, total: 20 });
+        }
+      } catch (err) {
+        console.error(err);
+        setLeaveBalance({ used: 0, remaining: 0, total: 20 });
+      }
     };
 
     fetchBalance();
