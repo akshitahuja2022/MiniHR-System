@@ -12,6 +12,7 @@ const LeaveContextProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [leaves, setLeaves] = useState([]);
 
+  const [leaveBalance, setLeaveBalance] = useState([]);
   return (
     <LeaveContext.Provider
       value={{
@@ -21,6 +22,8 @@ const LeaveContextProvider = ({ children }) => {
         setLeaves,
         loading,
         setLoading,
+        leaveBalance,
+        setLeaveBalance,
       }}
     >
       {children}

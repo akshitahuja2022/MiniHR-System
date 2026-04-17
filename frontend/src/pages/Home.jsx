@@ -5,13 +5,8 @@ import { AuthContext } from "../Context/AuthContext";
 
 const Home = () => {
   const { isLogin } = useContext(AuthContext);
-  return (
-    <div>
-      {!isLogin && <Hero />}
-
-      <EmployeeDashboard />
-    </div>
-  );
+  return <div>{isLogin ? <EmployeeDashboard /> : <Hero />}</div>;
 };
 
 export default Home;
+  
