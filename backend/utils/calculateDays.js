@@ -3,6 +3,8 @@ export const calculateDays = (startDate, endDate) => {
   const end = new Date(endDate);
 
   const diffTime = end - start;
-  const days = diffTime / (1000 * 60 * 60 * 24) + 1;
-  return days;
+
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+  return diffDays + 1;
 };
