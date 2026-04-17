@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AuthContext } from "./AuthContext";
 
 const AuthContextProvider = ({ children }) => {
@@ -10,6 +10,31 @@ const AuthContextProvider = ({ children }) => {
 
   const [isLogin, setIsLogin] = useState(false);
   const [user, setUser] = useState();
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const res = await fetch(
+          `${import.meta.env.VITE_BACKEND_URL}/api/profile`,
+          {
+            credentials: "include",
+          },
+        );
+
+        const { profile, success } = await res.json();
+
+        if (success) {
+          setUser(profile);
+          setIsLogin(true);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    fetchProfile();
+  }, []);
 
   return (
     <AuthContext.Provider
@@ -20,6 +45,8 @@ const AuthContextProvider = ({ children }) => {
         setIsLogin,
         user,
         setUser,
+        loading,
+        setLoading,
       }}
     >
       {children}
