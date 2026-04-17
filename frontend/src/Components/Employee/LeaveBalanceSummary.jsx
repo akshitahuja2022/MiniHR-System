@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { LeaveContext } from "../Context/LeaveContext";
+import { LeaveContext } from "../../Context/LeaveContext";
 
 const LeaveBalanceSummary = () => {
   const { leaveBalance, setLeaveBalance } = useContext(LeaveContext);
