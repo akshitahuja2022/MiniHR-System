@@ -13,8 +13,7 @@ const LeaveBalanceSummary = () => {
         },
       );
 
-      const data = await res.json();
-      console.log(data);
+      const data = await res.json()
       setLeaveBalance(data.balance);
     };
 
