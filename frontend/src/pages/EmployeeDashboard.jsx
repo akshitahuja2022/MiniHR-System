@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ViewHistoryLeave from "../Components/Employee/ViewHistoryLeave";
-// import LeaveBalanceSummary from "../Components/Employee/LeaveBalanceSummary";
+import LeaveBalanceSummary from "../Components/Employee/LeaveBalanceSummary";
 // import MarkedAttendence from "../Components/Employee/MarkedAttendence";
 // import MyAttendence from "../Components/Employee/MyAttendence";
 
