@@ -26,7 +26,7 @@ app.use("/api/attendence", attendanceRouter);
 app.use("/api/admin", adminRouter);
 
 app.get("/", (req, res) => {
-  res.send("Hello from Hr System Server");
+  res.send("HR System Server is running successfully");
 });
 
 const PORT = process.env.PORT || 5000;
