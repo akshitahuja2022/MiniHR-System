@@ -20,7 +20,7 @@ app.use(
     credentials: true,
   }),
 );
-app.use("/api", authRouter);
+app.use("/api/auth", authRouter);
 app.use("/api/leave", leaveRouter);
 app.use("/api/attendence", attendanceRouter);
 app.use("/api/admin", adminRouter);
