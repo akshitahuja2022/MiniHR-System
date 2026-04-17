@@ -6,13 +6,16 @@ import App from "./App.jsx";
 import AuthContextProvider from "./Context/AuthContextProvider.jsx";
 import LeaveContextProvider from "./Context/LeaveContextProvider.jsx";
 import AttendanceProvider from "./Context/AttendenceContextProvider.jsx";
+import AdminContextProvider from "./Context/AdminContextProvider.jsx";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <AuthContextProvider>
       <LeaveContextProvider>
         <AttendanceProvider>
-          <App />
+          <AdminContextProvider>
+            <App />
+          </AdminContextProvider>
         </AttendanceProvider>
       </LeaveContextProvider>
     </AuthContextProvider>
