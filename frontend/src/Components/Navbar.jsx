@@ -131,6 +131,18 @@ const Navbar = () => {
               </p>
             </div>
 
+            <ul className="flex flex-col px-3 sm:px-4 py-2 space-y-2">
+              <li>
+                <Link
+                  onClick={() => setIsProfile(false)}
+                  to="/yourLeaves"
+                  className="block rounded-lg px-4 py-2 text-sm sm:text-base font-medium text-black hover:bg-blue-800 hover:text-whitetransition duration-200"
+                >
+                  Your Leaves
+                </Link>
+              </li>
+            </ul>
+
             <button
               onClick={handleLogout}
               className={`w-full rounded-full bg-blue-700 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-800
