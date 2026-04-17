@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ViewHistoryLeave from "../Components/Employee/ViewHistoryLeave";
-import LeaveBalanceSummary from "../Components/Employee/LeaveBalanceSummary";
-import MarkedAttendence from "../Components/Employee/MarkedAttendence";
-import MyAttendence from "../Components/Employee/MyAttendence";
+// import LeaveBalanceSummary from "../Components/Employee/LeaveBalanceSummary";
+// import MarkedAttendence from "../Components/Employee/MarkedAttendence";
+// import MyAttendence from "../Components/Employee/MyAttendence";
 
 const EmployeeDashboard = () => {
   return (
@@ -44,7 +44,7 @@ const EmployeeDashboard = () => {
                   Quickly mark today's attendance and keep your record updated.
                 </p>
                 <div className="mt-6 overflow-x-hidden">
-                  <MarkedAttendence />
+                  {/* <MarkedAttendence /> */}
                 </div>
               </div>
 
@@ -62,7 +62,7 @@ const EmployeeDashboard = () => {
               </div>
             </div>
 
-            <MyAttendence />
+            {/* <MyAttendence /> */}
 
             <div className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm shadow-slate-200/80">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -75,9 +75,7 @@ const EmployeeDashboard = () => {
                   </p>
                 </div>
               </div>
-              <div className="mt-6">
-                <ViewHistoryLeave />
-              </div>
+              <div className="mt-6">{/* <ViewHistoryLeave /> */}</div>
             </div>
           </section>
         </main>
