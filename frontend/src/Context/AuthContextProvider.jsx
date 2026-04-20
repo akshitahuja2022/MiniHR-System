@@ -32,6 +32,13 @@ const AuthContextProvider = ({ children }) => {
 
         const data = await res.json();
 
+        if (!data.ok) {
+          setUser(null);
+          setIsLogin(false);
+          localStorage.removeItem("user");
+          return;
+        }
+
         if (data.success) {
           setUser(data.profile);
           setIsLogin(true);
