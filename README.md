@@ -8,7 +8,7 @@
 
 | Service  | URL |
 |----------|-----|
-| Frontend | https://minihr-system-4qz0.onrender.com/ |
+| Frontend | https://mini-hr-system.netlify.app |
 | Backend  | https://hrsystem-rbfu.onrender.com |
 | GitHub   | https://github.com/akshitahuja2022/MiniHR-System |
 
@@ -252,7 +252,7 @@ This project was built with the assistance of **GitHub Copilot**. Below is a tra
 
 | Phase        | Time       |
 |-------------|------------|
-| **Total**   | **~18 hours** |
+| **Total**   | **~20 hours** |
 ---
 
 ## 📂 Project Structure
