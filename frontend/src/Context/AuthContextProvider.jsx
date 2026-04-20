@@ -17,11 +17,16 @@ const AuthContextProvider = ({ children }) => {
       try {
         const storedUser = localStorage.getItem("user");
 
-        if (storedUser) {
-          const parsedUser = JSON.parse(storedUser);
-          setUser(parsedUser);
-          setIsLogin(true);
+        if (!storedUser) {
+          setUser(null);
+          setIsLogin(false);
+          setLoading(false);
+          return;
         }
+
+        const parsedUser = JSON.parse(storedUser);
+        setUser(parsedUser);
+        setIsLogin(true);
 
         const res = await fetch(
           `${import.meta.env.VITE_BACKEND_URL}/api/auth/profile`,
@@ -30,23 +35,19 @@ const AuthContextProvider = ({ children }) => {
           },
         );
 
-        const data = await res.json();
-
-        if (!data.ok) {
+        if (res.status === 401) {
           setUser(null);
           setIsLogin(false);
           localStorage.removeItem("user");
           return;
         }
 
+        const data = await res.json();
+
         if (data.success) {
           setUser(data.profile);
           setIsLogin(true);
           localStorage.setItem("user", JSON.stringify(data.profile));
-        } else {
-          setUser(null);
-          setIsLogin(false);
-          localStorage.removeItem("user");
         }
       } catch (error) {
         console.log(error);
